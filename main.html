@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Proposal</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background: url("bg3.jpeg") no-repeat center center/cover;
+
+    font-family: Arial, sans-serif;
+    color:white;
+    height:100vh;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    color: white;
+}
+
+#yes{
+    background:#00ff48;
+    border:none;
+   
+}
+
+#no{
+    background:#ff4444;
+    border:none;
+    position:relative;
+    color: whitesmoke;
+
+
+}
+
+
+</style>
+</head>
+<body class="d-flex justify-content-center align-items-center">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+
+            <div class="card p-4 text-center shadow-lg">
+
+                <h2 class="mb-3">Dear <span id="result"></span> ❤️</h2>
+                <h4 class="mb-4">Will you be my Valentine?</h4>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <button id="yes" class="btn btn-success px-4 py-2" onclick="yesClicked()" style=" color: whitesmoke;">Yes</button>
+                    <button id="no" class="btn btn-danger px-4 py-2" onmouseover="moveButton()">No</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+
+// Get name from URL
+const params = new URLSearchParams(window.location.search);
+const user = params.get("user");
+document.getElementById("result").innerHTML = user;
+
+// YES button
+function yesClicked(){
+    window.location.href = "massage.html?user=" + user;
+}
+
+// Move NO button inside screen
+function moveButton(){
+    let btn = document.getElementById("no");
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    btn.style.position="absolute";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+</script>
+
+</body>
+</html>
